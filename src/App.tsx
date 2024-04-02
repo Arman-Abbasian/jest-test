@@ -1,6 +1,4 @@
-import './App.css';
-import AddFriendForm  from './components/AddCustomer';
-import { CustomerList } from './components/CustomerList';
+import InfiniteScroll from './components/InfiniteScroll';
 import JestTest from './components/JestTest';
 
 
@@ -11,7 +9,8 @@ function App() {
     <>
       {/* <AddFriendForm />
       <CustomerList /> */}
-      <JestTest />
+      {/* <JestTest /> */}
+      <InfiniteScroll />
     </>
   )
 }

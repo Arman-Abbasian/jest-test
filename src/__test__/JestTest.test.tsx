@@ -1,49 +1,47 @@
-// import { render, waitFor, screen } from '@testing-library/react';
-// import JestTest from './JestTest';
-// import axios from 'axios';
-// import MockAdapter from 'axios-mock-adapter';
-// import '@testing-library/jest-dom';
+import { render, waitFor, screen } from '@testing-library/react';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+import '@testing-library/jest-dom';
+import JestTest from '../components/JestTest';
 
-// const mockData = [
-//   { userId: 1, id: 1, title: 'Title 1', body: 'Body 1' },
-//   { userId: 2, id: 2, title: 'Title 2', body: 'Body 2' },
-// ];
+const mockData = [
+  { userId: 1, id: 1, title: 'Title 1', body: 'Body 1' },
+  { userId: 2, id: 2, title: 'Title 2', body: 'Body 2' },
+];
 
-// describe('JestTest Component', () => {
-//   let axiosMock: MockAdapter;
+describe('JestTest Component', () => {
+  let axiosMock: MockAdapter;
 
-//   beforeEach(() => {
-//     axiosMock = new MockAdapter(axios);
-//   });
+  beforeEach(() => {
+    axiosMock = new MockAdapter(axios);
+  });
 
-//   afterEach(() => {
-//     axiosMock.restore();
-//   });
+  afterEach(() => {
+    axiosMock.restore();
+  });
 
-//   it('renders loading message initially', async () => {
-//     axiosMock.onGet("https://jsonplaceholder.typicode.com/posts").reply(200, mockData);
-//     render(<JestTest />);
+  it('renders loading message initially', async () => {
+    axiosMock.onGet("https://jsonplaceholder.typicode.com/posts").reply(200, mockData);
+    render(<JestTest />);
 
-//     expect(screen.getByText('loading .....</div>') ).toBeInTheDocument();
+    expect(screen.getByText('loading .....</div>') ).toBeInTheDocument();
 
-//     await waitFor(() => {
-//       expect(screen.getByText('Title 1')).toBeInTheDocument();
-//       expect(screen.getByText('Title 2')).toBeInTheDocument();
-//     });
-//   });
+    await waitFor(() => {
+      expect(screen.getByText('Title 1')).toBeInTheDocument();
+      expect(screen.getByText('Title 2')).toBeInTheDocument();
+    });
+  });
 
-//   it('handles API call failure', async () => {
-//     axiosMock.onGet("https://jsonplaceholder.typicode.com/posts").reply(500, 'Internal Server Error');
-//     render(<JestTest />);
+//--------
+});
 
-//     expect(screen.getByText('loading .....</div>')).toBeInTheDocument();
+ // it('handles API call failure', async () => {
+  //   axiosMock.onGet("https://jsonplaceholder.typicode.com/posts").reply(500, 'Internal Server Error');
+  //   render(<JestTest />);
 
-//     await waitFor(() => {
-//       expect(screen.getByText('Error: Internal Server Error')).toBeInTheDocument();
-//     });
-//   });
-// });
+  //   expect(screen.getByText('loading .....</div>')).toBeInTheDocument();
 
-test('demo', () => {
-  expect(true).toBe(true)
-})
+  //   await waitFor(() => {
+  //     expect(screen.getByText('Error: Internal Server Error')).toBeInTheDocument();
+  //   });
+  // });
